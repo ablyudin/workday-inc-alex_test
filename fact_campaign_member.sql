@@ -1,0 +1,153 @@
+
+CREATE TABLE facts.fact_campaign_member
+( 
+	campaign_member_id   varchar(18)  NULL ,
+	campaign_id          varchar(18)  NULL ,
+	email                varchar(80)  NULL ,
+	has_answered_all_polls boolean  NULL ,
+	has_answered_all_surveys boolean  NULL ,
+	has_attended_live    boolean  NULL ,
+	has_attended_on_demand boolean  NULL ,
+	external_id          varchar(20)  NULL ,
+	live_minutes         float8  NULL ,
+	number_of_polls_answered float8  NULL ,
+	number_of_surveys_answered float8  NULL ,
+	on_demand_minutes    float8  NULL ,
+	poll_question_1      varchar(3600)  NULL ,
+	poll_answer_1        varchar(1500)  NULL ,
+	poll_question_2      varchar(3600)  NULL ,
+	poll_answer_2        varchar(1500)  NULL ,
+	poll_question_3      varchar(3600)  NULL ,
+	poll_answer_3        varchar(1500)  NULL ,
+	poll_question_4      varchar(3600)  NULL ,
+	poll_answer_4        varchar(1500)  NULL ,
+	poll_question_5      varchar(3600)  NULL ,
+	poll_answer_5        varchar(1500)  NULL ,
+	survey_question_1    varchar(3600)  NULL ,
+	survey_answer_1      varchar(1500)  NULL ,
+	survey_question_2    varchar(3600)  NULL ,
+	survey_answer_2      varchar(1500)  NULL ,
+	survey_question_3    varchar(32768)  NULL ,
+	survey_answer_3      varchar(1500)  NULL ,
+	survey_question_4    varchar(3600)  NULL ,
+	survey_answer_4      varchar(1500)  NULL ,
+	survey_question_5    varchar(3600)  NULL ,
+	survey_answer_5      varchar(1500)  NULL ,
+	city                 varchar(40)  NULL ,
+	company_or_account   varchar(255)  NULL ,
+	contact_id           varchar(18)  NULL ,
+	country              varchar(80)  NULL ,
+	created_by           varchar(18)  NULL ,
+	created_date         timestamp  NULL ,
+	description          varchar(32000)  NULL ,
+	do_not_call          boolean  NULL ,
+	email_opt_out        boolean  NULL ,
+	fax                  varchar(40)  NULL ,
+	fax_opt_out          boolean  NULL ,
+	first_responded_date timestamp  NULL ,
+	lead_id              varchar(18)  NULL ,
+	lead_source          varchar(1300)  NULL ,
+	has_responded        boolean  NULL ,
+	salutation           varchar(40)  NULL ,
+	status               varchar(40)  NULL ,
+	account_add_on_status varchar(1300)  NULL ,
+	account_is_customer_base_response boolean  NULL ,
+	account_fins_status  varchar(1300)  NULL ,
+	account_group        varchar(1300)  NULL ,
+	account_hcm_status   varchar(1300)  NULL ,
+	account_id           varchar(1300)  NULL ,
+	account_owner        varchar(1300)  NULL ,
+	appointment          varchar(40)  NULL ,
+	attended_questions_and_answers varchar(10000)  NULL ,
+	bizible_touchpoint_date timestamp  NULL ,
+	campaign_start_date  timestamp  NULL ,
+	campaign_super_type  varchar(1300)  NULL ,
+	campaign_type        varchar(350)  NULL ,
+	contact_next_follow_up_date timestamp  NULL ,
+	contact_next_step    varchar(1300)  NULL ,
+	contact_is_no_longer_with_company boolean  NULL ,
+	contact_or_lead_current_engagement_stage varchar(1300)  NULL ,
+	contact_or_lead_most_recent_mql_date timestamp  NULL ,
+	contact_disposition  varchar(1300)  NULL ,
+	contact_disposition_detail varchar(1300)  NULL ,
+	csd_fins             varchar(1300)  NULL ,
+	csd_hcm              varchar(1300)  NULL ,
+	customer_base_ae     varchar(1300)  NULL ,
+	employee_range       varchar(1300)  NULL ,
+	financials_ae        varchar(1300)  NULL ,
+	financials_customer  varchar(1300)  NULL ,
+	first_associated_date_historical timestamp  NULL ,
+	first_responded_date_and_time timestamp  NULL ,
+	functional_area      varchar(1300)  NULL ,
+	functional_area_text varchar(32768)  NULL ,
+	ga_campaign          varchar(255)  NULL ,
+	ga_medium            varchar(255)  NULL ,
+	ga_source            varchar(255)  NULL ,
+	integrate_publisher_id varchar(1300)  NULL ,
+	interest_score       float8  NULL ,
+	job_level            varchar(1300)  NULL ,
+	last_csd_ae_connect  timestamp  NULL ,
+	last_csd_connect     timestamp  NULL ,
+	last_csd_reachout    timestamp  NULL ,
+	last_interesting_moment varchar(1300)  NULL ,
+	last_interesting_moment_date timestamp  NULL ,
+	last_interesting_moment_desc varchar(1300)  NULL ,
+	last_interesting_moment_type varchar(1300)  NULL ,
+	last_sales_ae_connect timestamp  NULL ,
+	last_sales_connect   timestamp  NULL ,
+	last_sales_reachout  timestamp  NULL ,
+	lattice_account_id   varchar(1300)  NULL ,
+	lead_contact_status  varchar(1300)  NULL ,
+	contact_lead_rating_depricated varchar(1300)  NULL ,
+	lead_rating_depricated varchar(1300)  NULL ,
+	lead_score           varchar(1300)  NULL ,
+	ls_lead_rating       varchar(1300)  NULL ,
+	marketo_job_title    varchar(1300)  NULL ,
+	is_mql_response      boolean  NULL ,
+	mql_update_dt        timestamp  NULL ,
+	number_of_employees  varchar(1300)  NULL ,
+	open_opportunity_count float8  NULL ,
+	product_focus        varchar(1300)  NULL ,
+	qualification_score  float8  NULL ,
+	record_count         float8  NULL ,
+	registration_source  varchar(255)  NULL ,
+	reject_reason        varchar(1300)  NULL ,
+	is_target_for_financials_ae boolean  NULL ,
+	touchpoint_status_contact varchar(255)  NULL ,
+	touchpoint_status_lead varchar(255)  NULL ,
+	touchpoint_status_opportunity varchar(255)  NULL ,
+	touchpoint_status_date timestamp  NULL ,
+	upgrade_or_replace   varchar(1300)  NULL ,
+	campaign_member_key  integer  NOT NULL ,
+	campaign_key         integer  NULL ,
+	contact_key          integer  NULL ,
+	lead_key             integer  NULL ,
+	account_key          integer  NULL ,
+	last_modified_by_user_key integer  NULL ,
+	last_modified_date_key integer  NULL ,
+	campaign_start_date_key integer  NULL  
+);
+
+ALTER TABLE facts.fact_campaign_member
+	ADD CONSTRAINT XPKFact_Campaign_Member_ix PRIMARY KEY (campaign_member_key);
+
+ALTER TABLE facts.fact_campaign_member
+	ADD CONSTRAINT dim_campaign_fact_campaign_member_campaign_key_fk FOREIGN KEY (campaign_key) REFERENCES dims.dim_campaign(campaign_key);
+
+ALTER TABLE facts.fact_campaign_member
+	ADD CONSTRAINT dim_contact_fact_campaign_member_contact_key_fk FOREIGN KEY (contact_key) REFERENCES dims.dim_contact(contact_key);
+
+ALTER TABLE facts.fact_campaign_member
+	ADD CONSTRAINT dim_lead_fact_campaign_member_lead_key_fk FOREIGN KEY (lead_key) REFERENCES dims.dim_lead(lead_key);
+
+ALTER TABLE facts.fact_campaign_member
+	ADD CONSTRAINT dim_account_fact_campaign_member_account_key_fk FOREIGN KEY (account_key) REFERENCES dims.dim_account(account_key);
+
+ALTER TABLE facts.fact_campaign_member
+	ADD CONSTRAINT dim_user_fact_campaign_member_last_modified_by_user_key_fk FOREIGN KEY (last_modified_by_user_key) REFERENCES dims.dim_user(user_key);
+
+ALTER TABLE facts.fact_campaign_member
+	ADD CONSTRAINT dim_date_fact_campaign_member_last_modified_date_key_fk FOREIGN KEY (last_modified_date_key) REFERENCES dims.dim_date(wd_id);
+
+ALTER TABLE facts.fact_campaign_member
+	ADD CONSTRAINT dim_date_fact_campaign_member_campaign_start_date_key_fk FOREIGN KEY (campaign_start_date_key) REFERENCES dims.dim_date(wd_id);
